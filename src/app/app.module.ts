@@ -7,16 +7,19 @@ import { AppComponent } from './app.component';
 import { MyRulesDirective } from './my-rules.directive';
 import { PostListComponent } from './post-list/post-list.component';
 import { HttpClientModule } from '@angular/common/http';
+import { PostService } from './services/post.service';
+import { PostSaveComponent } from './post-save/post-save.component';
 
 const appRoutes: Routes = [
-
+  {path: 'posts/create', component: PostSaveComponent}
   {path: 'posts', component: PostListComponent}
 ];
 @NgModule({
   declarations: [
     AppComponent,
     MyRulesDirective,
-    PostListComponent
+    PostListComponent,
+    PostSaveComponent
   ],
   imports: [
     FormsModule,
@@ -24,7 +27,7 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     HttpClientModule
   ],
-  providers: [],
+  providers: [PostService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
