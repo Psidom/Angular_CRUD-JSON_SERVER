@@ -1,7 +1,7 @@
 export class Cadastro {
   nome: string;
   idade: number;
-  data: Date;
+  data: string;
   atributo1: string;
   atributo2: string;
   atributo3: string;

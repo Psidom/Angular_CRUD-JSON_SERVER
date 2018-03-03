@@ -6,10 +6,12 @@ import { getLocaleDateTimeFormat } from '@angular/common';
 import { AppComponent } from './app.component';
 import { MyRulesDirective } from './my-rules.directive';
 import { PostListComponent } from './post-list/post-list.component';
+import { HttpClientModule } from '@angular/common/http';
 
 const appRoutes: Routes = [
+
   {path: 'posts', component: PostListComponent}
-]
+];
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,7 +21,8 @@ const appRoutes: Routes = [
   imports: [
     FormsModule,
     BrowserModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

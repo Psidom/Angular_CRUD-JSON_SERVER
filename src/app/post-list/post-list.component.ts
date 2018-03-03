@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Cadastro } from '../Cadastro';
+import { HttpClientModule } from '@angular/common/http';
+import { HttpClient} from '@angular/common/http';
+
 
 @Component({
   selector: 'app-post-list',
@@ -13,7 +16,7 @@ export class PostListComponent implements OnInit {
 
   cadastro: Cadastro = {
     nome: '',
-    idade: '',
+    idade: 10,
     data: this.datadia,
     atributo1: null,
     atributo2: null,
@@ -45,6 +48,12 @@ export class PostListComponent implements OnInit {
       return null;
     }
     this.cadastros.push(cadastro);
+    cadastro.atributo1 = '';
+    cadastro.atributo2 = '';
+    cadastro.atributo3 = '';
+    cadastro.atributo4 = '';
+    cadastro.atributo5 = '';
+
   }
   add() {
     this.cadastros.push(this.nome);
@@ -67,9 +76,14 @@ export class PostListComponent implements OnInit {
     this.cadastros.push(this.atributo4);
     this.cadastros.push(this.atributo5);
   }
-  constructor() { }
+
+    // tslint:disable-next-line:member-ordering
+    posts: any = [] ;
+      baseUrl= 'https://jsonplaceholder.typicode.com/posts'
+  constructor(private http: HttpClient) { }
 
   ngOnInit() {
+      this.http.get(this.baseUrl).subscribe(data => this.posts = data)
   }
 
 }

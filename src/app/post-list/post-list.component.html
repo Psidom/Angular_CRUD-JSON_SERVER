@@ -42,22 +42,23 @@
     <br>
     <br>
     <fieldset>
-        <legend>Clones Cadastrados</legend>
-        <table>
+        <h1>Clones Cadastrados</h1>
+        <table class="table table-striped">
             <thead>
                 <tr>
                     <td>Nome</td>
                     <td>Idade</td>
                     <td>Data de Criação</td>
                     <td>Atributos Especiais</td>
+                    <td>Funções</td>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td *ngFor="let item of cadastros">{{item.nome}}</td>
-                    <td *ngFor="let item of cadastros">{{item.idade}}</td>
-                    <td *ngFor="let item of cadastros">{{item.data}}</td>
-                    <td *ngFor="let item of cadastros">{{item.atributo1}} {{item.atributo2}} {{item.atributo3}} {{item.atributo4}} {{item.atributo5}}</td>
+                <tr *ngFor="let item of cadastros">
+                    <td>{{item.nome}}</td>
+                    <td>{{item.idade}}</td>
+                    <td>{{item.data}}</td>
+                    <td>{{item.atributo1}} {{item.atributo2}} {{item.atributo3}} {{item.atributo4}} {{item.atributo5}}</td>
                 </tr>
             </tbody>
         </table>

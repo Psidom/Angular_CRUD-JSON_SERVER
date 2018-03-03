@@ -10,12 +10,4 @@ export class MyRulesDirective {
   constructor(private el: ElementRef) {
     this.el.nativeElement.innerHTML += '';
   }
-
-  @HostListener('click')
-  onClick() {
-  alert('testando')
-  }
-
-
-
 }
