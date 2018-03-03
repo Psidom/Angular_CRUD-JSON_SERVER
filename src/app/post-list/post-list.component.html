@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<section>
+    <fieldset>
+        <legend>Maquina de Clones</legend>
+        <form action="" method="post">
+            <br>
+            <label for="nome">Nome:</label>
+            <input id="nome" name="nome" type="text" [(ngModel)]="cadastro.nome" required>
+            <br>
+            <br>
+            <label for="idade">Idade:</label>
+            <input type="text" name="idade" id="idade" [(ngModel)]="cadastro.idade" appMyRules required>
+            <br>
+            <br>
+            <input type="text" name="data" id="data" [(ngModel)]="cadastro.data" hidden readonly required>
+            <br>
+            <br>
+            <fieldset>
+                <legend>Atributos especiais</legend>
+                <br>
+                <input type="checkbox" name="Raio Laser" id="Raio Laser" value="Raio Laser" ng-reflect-model="Raio Laser" [(ngModel)]="cadastro.atributo1">
+                <label for="Raio Laser">Raio Laser</label>
+                <br>
+                <input type="checkbox" name="Braço Mecânico" id="Braco Mecanico" value="Braço Mecânico" [(ngModel)]="cadastro.atributo2">
+                <label for="Braco Mecanico">Braço Mecânico</label>
+                <br>
+                <input type="checkbox" name="Esquelo Reforcado" id="Esquelo Reforcado" [(ngModel)]="cadastro.atributo3">
+                <label for="Esquelo Reforcado">Esquelo Reforçado</label>
+                <br>
+                <input type="checkbox" name="Sentidos Agucados" id="Sentidos Agucados" [(ngModel)]="cadastro.atributo4">
+                <label for="Sentidos Agucados">Sentidos Aguçados</label>
+                <br>
+                <input type="checkbox" name="Pele Adaptativa" id="Pele Adaptativa" [(ngModel)]="cadastro.atributo5">
+                <label for="Pele Adaptativa">Pele Adaptativa</label>
+            </fieldset>
+            <br>
+            <br>
+            <button type="submit">Cadastrar</button>&nbsp;
+            <button type="button" (click)="addobj()">Testando</button>
+        </form>
+    </fieldset>
+    <br>
+    <br>
+    <fieldset>
+        <legend>Clones Cadastrados</legend>
+        <table>
+            <thead>
+                <tr>
+                    <td>Nome</td>
+                    <td>Idade</td>
+                    <td>Data de Criação</td>
+                    <td>Atributos Especiais</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td *ngFor="let item of cadastros">{{item.nome}}</td>
+                    <td *ngFor="let item of cadastros">{{item.idade}}</td>
+                    <td *ngFor="let item of cadastros">{{item.data}}</td>
+                    <td *ngFor="let item of cadastros">{{item.atributo1}} {{item.atributo2}} {{item.atributo3}} {{item.atributo4}} {{item.atributo5}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </fieldset>
+
+</section>
