@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component} from '@angular/core';
 import { isDate } from 'util';
 import { getLocaleDateFormat, getLocaleDateTimeFormat, DatePipe } from '@angular/common';
 import { Cadastro } from './Cadastro';
@@ -7,9 +7,22 @@ import { Cadastro } from './Cadastro';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
+
 export class AppComponent {
-  title = 'app';
-  tasks = [];
+  cadastros = [];
+
+  datadia = new Date().toLocaleDateString('pt-BR');
+
+  cadastro: Cadastro = {
+    nome: '',
+    idade: '',
+    data: this.datadia,
+    atributo1: null,
+    atributo2: null,
+    atributo3: null,
+    atributo4: null,
+    atributo5: null
+  };
 
   nome: '';
     idade: '';
@@ -18,13 +31,27 @@ export class AppComponent {
     atributo3 = null;
     atributo4 = null;
     atributo5 = null;
-  datadia = new Date().toLocaleDateString('pt-BR');
-
+  addobj() {
+    const cadastro = Object.assign({}, this.cadastro);
+    if ( cadastro.atributo1 != null || cadastro.atributo1 === 'true') {
+      cadastro.atributo1 = 'Raio Laser';
+    }if (cadastro.atributo2 != null || cadastro.atributo2 === 'true') {
+      cadastro.atributo2 = 'Braço Mecânico';
+    }if (cadastro.atributo3 != null || cadastro.atributo3 === 'true') {
+      cadastro.atributo3 = 'Esqueleto Reforçado';
+    }if (cadastro.atributo4 != null || cadastro.atributo4 === 'true') {
+      cadastro.atributo4 = 'Sentidos Aguçados';
+    }if (cadastro.atributo5 != null || cadastro.atributo5 === 'true') {
+      cadastro.atributo5 = 'Pele Adaptativa';
+    }if (cadastro.idade < 10 || cadastro.idade > 20 ) {
+      return null;
+    }
+    this.cadastros.push(cadastro);
+  }
   add() {
-
-    this.tasks.push(this.nome);
-    this.tasks.push(this.idade);
-    this.tasks.push(this.datadia);
+    this.cadastros.push(this.nome);
+    this.cadastros.push(this.idade);
+    this.cadastros.push(this.datadia);
     if (this.atributo1 != null || this.atributo1 === 'true') {
       this.atributo1 = 'Raio Laser';
     }if (this.atributo2 != null || this.atributo2 === 'true') {
@@ -36,10 +63,10 @@ export class AppComponent {
     }if (this.atributo5 != null || this.atributo5 === 'true') {
       this.atributo5 = 'Pele Adaptativa';
     }
-    this.tasks.push(this.atributo1);
-    this.tasks.push(this.atributo2);
-    this.tasks.push(this.atributo3);
-    this.tasks.push(this.atributo4);
-    this.tasks.push(this.atributo5);
+    this.cadastros.push(this.atributo1);
+    this.cadastros.push(this.atributo2);
+    this.cadastros.push(this.atributo3);
+    this.cadastros.push(this.atributo4);
+    this.cadastros.push(this.atributo5);
   }
 }

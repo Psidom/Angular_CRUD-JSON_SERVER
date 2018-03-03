@@ -3,11 +3,13 @@ import { NgModule } from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import { getLocaleDateTimeFormat } from '@angular/common';
 import { AppComponent } from './app.component';
+import { MyRulesDirective } from './my-rules.directive';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    MyRulesDirective
   ],
   imports: [
     FormsModule,
