@@ -7,11 +7,11 @@
     <form class="form-horizontal" (submit)="save()">
         <div class="form-group">
             <label for="nome" class="control-label">Nome:</label>
-            <input id="nome" name="nome" type="text" class="form-control" [(ngModel)]="post.nome" required>
+            <input id="nome" name="nome" pattern="[A-Z]" type="text" class="form-control" [(ngModel)]="post.nome" required>
         </div>
         <div class="form-group">
             <label for="idade" class="control-label">Idade:</label>
-            <input type="text" name="idade" id="idade" class="form-control" [(ngModel)]="post.idade" appMyRules required>
+            <input type="number" name="idade" id="idade" class="form-control" [(ngModel)]="post.idade" appMyRules required>
         </div>
         <input type="text" name="data" id="data" [(ngModel)]="post.data" hidden readonly required>
         <fieldset>

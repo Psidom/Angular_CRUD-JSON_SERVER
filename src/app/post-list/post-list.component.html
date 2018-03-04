@@ -1,11 +1,13 @@
 <!DOCTYPE html>
-<div class="row">
+<div class="col-md-12">
     <legend>Clones Cadastrados</legend>
     <app-button color="primary" routerLink="/posts/create">
         <app-glyph icon="plus"> </app-glyph>
     </app-button>
+    <div class="row">
+        <app-alert color="success" [close]="true" [timeout]="6000" *ngIf="message">{{message}}</app-alert>
+    </div>
     <table class="table table-striped">
-
         <thead>
             <tr>
                 <td>Nome</td>

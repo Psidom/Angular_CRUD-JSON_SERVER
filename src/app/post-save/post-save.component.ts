@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Cadastro } from '../Cadastro';
 import { PostService } from '../services/post.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { MessageService } from '../services/message.service';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-post-save',
@@ -12,9 +14,11 @@ export class PostSaveComponent implements OnInit {
   [x: string]: any;
   cadastros = [];
 
+  valForm;
+
   datadia = new Date().toLocaleDateString('pt-BR');
 
-  cadastro: Cadastro = {
+ /* cadastro: Cadastro = {
     nome: '',
     idade: 10,
     data: this.datadia,
@@ -23,11 +27,11 @@ export class PostSaveComponent implements OnInit {
     atributo3: null,
     atributo4: null,
     atributo5: null
-  };
+  };*/
 
-  nome: '';
+    nome: '';
     idade: '';
-    atributo1 = null;
+   /* atributo1 = null;
     atributo2 = null;
     atributo3 = null;
     atributo4 = null;
@@ -49,8 +53,8 @@ export class PostSaveComponent implements OnInit {
       return null;
     }
     this.cadastros.push(cadastro);
-  }
-  add() {
+  }*/
+  /*add() {
     this.cadastros.push(this.nome);
     this.cadastros.push(this.idade);
     this.cadastros.push(this.datadia);
@@ -70,7 +74,7 @@ export class PostSaveComponent implements OnInit {
     this.cadastros.push(this.atributo3);
     this.cadastros.push(this.atributo4);
     this.cadastros.push(this.atributo5);
-  }
+  }*/
  // tslint:disable-next-line:member-ordering
  post = {
     nome: '',
@@ -85,7 +89,8 @@ export class PostSaveComponent implements OnInit {
   constructor(
     private postService: PostService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private messageService: MessageService
   ) {  }
 
   ngOnInit() {
@@ -94,8 +99,9 @@ export class PostSaveComponent implements OnInit {
         this.postService.find(+params['id'])
         .subscribe(data => this.post = data);
       }
-    })
+    });
   }
+
   save() {
     if ( this.post.atributo1 != null || this.post.atributo1 === 'true') {
       this.post.atributo1 = 'Raio Laser';
@@ -108,18 +114,14 @@ export class PostSaveComponent implements OnInit {
     }if (this.post.atributo5 != null || this.post.atributo5 === 'true') {
       this.post.atributo5 = 'Pele Adaptativa';
     }if (this.post.idade < 10 || this.post.idade > 20 ) {
-      return alert('erro');
+      return null;
     }
 
     this.postService.save(this.post)
-    .subscribe(() => alert('Enviado com Sucesso'));
-    this.post.nome =  '';
-    this.post.idade = 10;
-    this.post.data = this.datadia;
-    this.post.atributo1 = null;
-    this.post.atributo2 = null;
-    this.post.atributo3 = null;
-    this.post.atributo4 = null;
-    this.post.atributo5 = null;
+    .subscribe(() => {
+      this.messageService.message = 'Enviado Com Sucesso';
+      alert(JSON.stringify(this.post)),
+      this.router.navigate(['/posts'])
+    });
   }
 }

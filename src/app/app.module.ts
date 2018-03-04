@@ -1,7 +1,7 @@
 import {Routes, RouterModule} from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { getLocaleDateTimeFormat } from '@angular/common';
 import { AppComponent } from './app.component';
 import { MyRulesDirective } from './my-rules.directive';
@@ -13,6 +13,7 @@ import { ButtonComponent } from './bootstrap/button/button.component';
 import { GlyphComponent } from './bootstrap/glyph/glyph.component';
 import { ModalComponent } from './bootstrap/modal/modal.component';
 import { AlertComponent } from './bootstrap/alert/alert.component';
+import { MessageService } from './services/message.service';
 
 
 const appRoutes: Routes = [
@@ -36,9 +37,10 @@ const appRoutes: Routes = [
     FormsModule,
     BrowserModule,
     RouterModule.forRoot(appRoutes),
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule,
   ],
-  providers: [PostService],
+  providers: [PostService, MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
