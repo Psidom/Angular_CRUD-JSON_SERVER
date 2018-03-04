@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Cadastro } from '../Cadastro';
+import { PostService } from '../services/post.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-post-save',
@@ -7,6 +9,7 @@ import { Cadastro } from '../Cadastro';
   styleUrls: ['./post-save.component.css']
 })
 export class PostSaveComponent implements OnInit {
+  [x: string]: any;
   cadastros = [];
 
   datadia = new Date().toLocaleDateString('pt-BR');
@@ -29,6 +32,7 @@ export class PostSaveComponent implements OnInit {
     atributo3 = null;
     atributo4 = null;
     atributo5 = null;
+
   addobj() {
     const cadastro = Object.assign({}, this.cadastro);
     if ( cadastro.atributo1 != null || cadastro.atributo1 === 'true') {
@@ -45,12 +49,6 @@ export class PostSaveComponent implements OnInit {
       return null;
     }
     this.cadastros.push(cadastro);
-    cadastro.atributo1 = '';
-    cadastro.atributo2 = '';
-    cadastro.atributo3 = '';
-    cadastro.atributo4 = '';
-    cadastro.atributo5 = '';
-
   }
   add() {
     this.cadastros.push(this.nome);
@@ -73,10 +71,55 @@ export class PostSaveComponent implements OnInit {
     this.cadastros.push(this.atributo4);
     this.cadastros.push(this.atributo5);
   }
-
-  constructor() { }
+ // tslint:disable-next-line:member-ordering
+ post = {
+    nome: '',
+    idade: 10,
+    data: this.datadia,
+    atributo1: null,
+    atributo2: null,
+    atributo3: null,
+    atributo4: null,
+    atributo5: null
+ };
+  constructor(
+    private postService: PostService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {  }
 
   ngOnInit() {
+    this.route.params.subscribe(params => {
+      if (params.hasOwnProperty('id')) {
+        this.postService.find(+params['id'])
+        .subscribe(data => this.post = data);
+      }
+    })
   }
+  save() {
+    if ( this.post.atributo1 != null || this.post.atributo1 === 'true') {
+      this.post.atributo1 = 'Raio Laser';
+    }if (this.post.atributo2 != null || this.post.atributo2 === 'true') {
+      this.post.atributo2 = 'Braço Mecânico';
+    }if (this.post.atributo3 != null || this.post.atributo3 === 'true') {
+      this.post.atributo3 = 'Esqueleto Reforçado';
+    }if (this.post.atributo4 != null || this.post.atributo4 === 'true') {
+      this.post.atributo4 = 'Sentidos Aguçados';
+    }if (this.post.atributo5 != null || this.post.atributo5 === 'true') {
+      this.post.atributo5 = 'Pele Adaptativa';
+    }if (this.post.idade < 10 || this.post.idade > 20 ) {
+      return alert('erro');
+    }
 
+    this.postService.save(this.post)
+    .subscribe(() => alert('Enviado com Sucesso'));
+    this.post.nome =  '';
+    this.post.idade = 10;
+    this.post.data = this.datadia;
+    this.post.atributo1 = null;
+    this.post.atributo2 = null;
+    this.post.atributo3 = null;
+    this.post.atributo4 = null;
+    this.post.atributo5 = null;
+  }
 }

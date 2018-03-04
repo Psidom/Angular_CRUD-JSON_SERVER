@@ -12,8 +12,9 @@ import { PostSaveComponent } from './post-save/post-save.component';
 import { ButtonComponent } from './bootstrap/button/button.component';
 
 const appRoutes: Routes = [
-  {path: 'posts/create', component: PostSaveComponent}
-  {path: 'posts', component: PostListComponent}
+  {path: 'posts/:id/edit', component: PostSaveComponent},
+  {path: 'posts/create', component: PostSaveComponent},
+  {path: 'posts', component: PostListComponent},
 ];
 @NgModule({
   declarations: [

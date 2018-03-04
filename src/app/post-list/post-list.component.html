@@ -18,6 +18,10 @@
                 <td>{{post.id}}</td>
                 <td>{{post.title}}</td>
                 <td>{{post.body}}</td>
+                <td>{{post.userId}}</td>
+                <td>
+                    <a [routerLink]="['/posts',post.id,'edit']">Editar</a>
+                </td>
             </tr>
             <!-- <tr *ngFor="let item of cadastros">
                     <td>{{item.nome}}</td>
