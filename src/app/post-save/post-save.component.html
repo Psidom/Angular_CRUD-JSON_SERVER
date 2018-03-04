@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <div class="row">
-    <legend>Maquina de Clones</legend>
+    <legend *ngIf="!post.id;else legend_Editar">Maquina de Clones</legend>
+    <ng-template #legend_Editar>
+        <legend>Editar Clone</legend>
+    </ng-template>
     <form class="form-horizontal" (submit)="save()">
         <div class="form-group">
             <label for="nome" class="control-label">Nome:</label>
