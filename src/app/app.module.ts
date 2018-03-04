@@ -11,9 +11,11 @@ import { PostService } from './services/post.service';
 import { PostSaveComponent } from './post-save/post-save.component';
 import { ButtonComponent } from './bootstrap/button/button.component';
 import { GlyphComponent } from './bootstrap/glyph/glyph.component';
+import { ModalComponent } from './bootstrap/modal/modal.component';
 
 
 const appRoutes: Routes = [
+  {path: '', component: PostListComponent},
   {path: 'posts/:id/edit', component: PostSaveComponent},
   {path: 'posts/create', component: PostSaveComponent},
   {path: 'posts', component: PostListComponent},
@@ -26,6 +28,7 @@ const appRoutes: Routes = [
     PostSaveComponent,
     ButtonComponent,
     GlyphComponent,
+    ModalComponent,
   ],
   imports: [
     FormsModule,

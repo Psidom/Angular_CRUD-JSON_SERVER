@@ -9,6 +9,7 @@ export class GlyphComponent implements OnInit {
 
   @Input()
   icon;
+
   constructor() { }
 
   ngOnInit() {
