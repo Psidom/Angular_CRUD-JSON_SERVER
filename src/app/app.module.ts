@@ -12,6 +12,7 @@ import { PostSaveComponent } from './post-save/post-save.component';
 import { ButtonComponent } from './bootstrap/button/button.component';
 import { GlyphComponent } from './bootstrap/glyph/glyph.component';
 import { ModalComponent } from './bootstrap/modal/modal.component';
+import { AlertComponent } from './bootstrap/alert/alert.component';
 
 
 const appRoutes: Routes = [
@@ -29,6 +30,7 @@ const appRoutes: Routes = [
     ButtonComponent,
     GlyphComponent,
     ModalComponent,
+    AlertComponent,
   ],
   imports: [
     FormsModule,
