@@ -9,6 +9,7 @@ import { PostListComponent } from './post-list/post-list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { PostService } from './services/post.service';
 import { PostSaveComponent } from './post-save/post-save.component';
+import { ButtonComponent } from './bootstrap/button/button.component';
 
 const appRoutes: Routes = [
   {path: 'posts/create', component: PostSaveComponent}
@@ -19,7 +20,8 @@ const appRoutes: Routes = [
     AppComponent,
     MyRulesDirective,
     PostListComponent,
-    PostSaveComponent
+    PostSaveComponent,
+    ButtonComponent
   ],
   imports: [
     FormsModule,

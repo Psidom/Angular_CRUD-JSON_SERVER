@@ -1,12 +1,15 @@
 <!DOCTYPE html>
-<fieldset>
+<div class="row">
     <legend>Maquina de Clones</legend>
-    <form action="" method="post">
-        <br>
-        <label for="nome">Nome:</label>
-        <input id="nome" name="nome" type="text" [(ngModel)]="cadastro.nome" required>
-        <br>
-        <br>
+    <form class="form-horizontal">
+        <div class="form-group">
+            <label for="nome" class="control-label">Nome:</label>
+            <input id="nome" name="nome" type="text" class="form-control" [(ngModel)]="cadastro.nome" required>
+        </div>
+        <div class="form-group">
+            <label for="idade" class="control-label">Idade:</label>
+            <input type="text" name="idade" id="idade" class="form-control" [(ngModel)]="cadastro.idade" appMyRules required>
+        </div>
         <label for="idade">Idade:</label>
         <input type="text" name="idade" id="idade" [(ngModel)]="cadastro.idade" appMyRules required>
         <br>
@@ -37,6 +40,6 @@
         <button type="submit">Cadastrar</button>&nbsp;
         <button type="button" (click)="addobj()">Testando</button>
     </form>
-</fieldset>
+</div>
 <br>
 <br>
