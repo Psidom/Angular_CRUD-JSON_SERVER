@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Cadastro } from '../Cadastro';
 import { PostService } from '../services/post.service';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -8,7 +8,8 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 @Component({
   selector: 'app-post-save',
   templateUrl: './post-save.component.html',
-  styleUrls: ['./post-save.component.css']
+  styleUrls: ['./post-save.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class PostSaveComponent implements OnInit {
   [x: string]: any;
@@ -29,9 +30,9 @@ export class PostSaveComponent implements OnInit {
     atributo5: null
   };*/
 
-    nome: '';
+   /*nome: '';
     idade: '';
-   /* atributo1 = null;
+    atributo1 = null;
     atributo2 = null;
     atributo3 = null;
     atributo4 = null;
@@ -78,13 +79,13 @@ export class PostSaveComponent implements OnInit {
  // tslint:disable-next-line:member-ordering
  post = {
     nome: '',
-    idade: 10,
+    idade: null,
     data: this.datadia,
-    atributo1: null,
-    atributo2: null,
-    atributo3: null,
-    atributo4: null,
-    atributo5: null
+    atributo1: '',
+    atributo2: '',
+    atributo3: '',
+    atributo4: '',
+    atributo5: ''
  };
   constructor(
     private postService: PostService,
@@ -93,27 +94,33 @@ export class PostSaveComponent implements OnInit {
     private messageService: MessageService
   ) {  }
 
+
   ngOnInit() {
     this.route.params.subscribe(params => {
       if (params.hasOwnProperty('id')) {
         this.postService.find(+params['id'])
-        .subscribe(data => this.post = data);
+        .subscribe(data => this.post = data, );
       }
     });
   }
 
   save() {
-    if ( this.post.atributo1 != null || this.post.atributo1 === 'true') {
-      this.post.atributo1 = 'Raio Laser';
-    }if (this.post.atributo2 != null || this.post.atributo2 === 'true') {
-      this.post.atributo2 = 'Braço Mecânico';
-    }if (this.post.atributo3 != null || this.post.atributo3 === 'true') {
-      this.post.atributo3 = 'Esqueleto Reforçado';
-    }if (this.post.atributo4 != null || this.post.atributo4 === 'true') {
-      this.post.atributo4 = 'Sentidos Aguçados';
-    }if (this.post.atributo5 != null || this.post.atributo5 === 'true') {
-      this.post.atributo5 = 'Pele Adaptativa';
-    }if (this.post.idade < 10 || this.post.idade > 20 ) {
+    if ( !this.post.atributo1 || this.post.atributo1 == null ) {
+      this.post.atributo1 = '';
+    } else { this.post.atributo1 = ' Raio Laser '; }
+    if (!this.post.atributo2 || this.post.atributo2 == null) {
+      this.post.atributo2 = '';
+    } else { this.post.atributo2 = ' Braço Mecânico '; }
+    if (!this.post.atributo3 || this.post.atributo3 == null) {
+      this.post.atributo3 = '';
+    } else { this.post.atributo3 = ' Esqueleto Reforçado '; }
+    if (!this.post.atributo4 || this.post.atributo4 == null) {
+      this.post.atributo4 = '';
+    } else { this.post.atributo4 = ' Sentidos Aguçados '; }
+    if (!this.post.atributo5 || this.post.atributo5 == null) {
+      this.post.atributo5 = '';
+    } else {this.post.atributo5 = ' Pele Adaptativa '; }
+    if (this.post.idade < 10 || this.post.idade > 20 ) {
       return null;
     }
 
@@ -121,7 +128,7 @@ export class PostSaveComponent implements OnInit {
     .subscribe(() => {
       this.messageService.message = 'Enviado Com Sucesso';
       alert(JSON.stringify(this.post)),
-      this.router.navigate(['/posts'])
+      this.router.navigate(['/clone']);
     });
   }
 }

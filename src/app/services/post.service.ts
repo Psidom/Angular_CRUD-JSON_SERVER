@@ -7,14 +7,14 @@ export class PostService {
 
   // tslint:disable-next-line:member-ordering
 
- private baseUrl = 'https://jsonplaceholder.typicode.com/posts';
+ private baseUrl = 'http://localhost:3010/posts';
 constructor(private http: HttpClient) { }
 
 query(): Observable<Array<any>> {
  return this.http.get<Array<any>>(this.baseUrl);
 }
 
-find(id: number): Observable<any> {
+find(id: any): Observable<any> {
 return this.http.get(`${this.baseUrl}/${id}`);
 }
 
@@ -23,7 +23,7 @@ return this.http.get(`${this.baseUrl}/${id}`);
    : this.http.put(`${this.baseUrl}/${data.id}`, data);
   }
 
-  destroy(id: number): Observable<any> { //Vai apresentar status 204
+  destroy(id: any): Observable<any> { //Vai apresentar status 204
     return this.http.delete(`${this.baseUrl}/${id}`);
   }
 }

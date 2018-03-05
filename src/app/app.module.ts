@@ -18,9 +18,9 @@ import { MessageService } from './services/message.service';
 
 const appRoutes: Routes = [
   {path: '', component: PostListComponent},
-  {path: 'posts/:id/edit', component: PostSaveComponent},
-  {path: 'posts/create', component: PostSaveComponent},
-  {path: 'posts', component: PostListComponent},
+  {path: 'clone/:id', component: PostSaveComponent},
+  {path: 'clone/create', component: PostSaveComponent},
+  {path: 'clone', component: PostListComponent},
 ];
 @NgModule({
   declarations: [

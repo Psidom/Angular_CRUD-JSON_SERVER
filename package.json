@@ -4,8 +4,8 @@
     "license": "MIT",
     "scripts": {
         "ng": "ng",
-        "start": "ng build && node ./bin/www",
-        "build": "ng build --prod",
+        "start": "ng serve ",
+        "build": "ng build --prod && node ./bin/www",
         "test": "ng test",
         "lint": "ng lint",
         "e2e": "ng e2e"
@@ -27,6 +27,7 @@
         "core-js": "^2.4.1",
         "express": "^4.16.2",
         "jquery": "^3.3.1",
+        "lowdb": "^1.0.0",
         "mongoose": "^5.0.8",
         "morgan": "^1.9.0",
         "rxjs": "^5.5.6",

@@ -30,7 +30,7 @@ router.post('/', function(req, res, next) {
 
 /* UPDATE BOOK */
 router.put('/:id', function(req, res, next) {
-  Clone.findByIdAndUpdate(req.params.id, req.body, function (err, post) {
+  Clone.findByIdAndUpdate(req.params._id, req.body, function (err, post) {
     if (err) return next(err);
     res.json(post);
   });
