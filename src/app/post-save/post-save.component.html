@@ -7,7 +7,7 @@
     <form class="form-horizontal" (submit)="save()">
         <div class="form-group">
             <label for="nome" class="control-label">Nome:</label>
-            <input id="nome" name="nome" pattern="[A-Z]" type="text" class="form-control" [(ngModel)]="post.nome" required>
+            <input id="nome" name="nome" required type="text" class="form-control" [(ngModel)]="post.nome">
         </div>
         <div class="form-group">
             <label for="idade" class="control-label">Idade:</label>
@@ -17,7 +17,7 @@
         <fieldset>
             <legend>Atributos especiais</legend>
             <br>
-            <input type="checkbox" name="Raio Laser" id="Raio_Laser" ng-true-value="'YES'" ng-model="teste" [(ngModel)]="post.atributo1">
+            <input type="checkbox" name="Raio Laser" id="Raio_Laser" [(ngModel)]="post.atributo1">
             <label for="Raio_Laser">Raio Laser</label>
             <br>
             <input type="checkbox" name="Braço Mecânico" id="Braco_Mecanico" value="Braço Mecânico" [(ngModel)]="post.atributo2">

@@ -3,7 +3,7 @@ import { Cadastro } from '../Cadastro';
 import { PostService } from '../services/post.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MessageService } from '../services/message.service';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-post-save',
@@ -92,7 +92,15 @@ export class PostSaveComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private messageService: MessageService
-  ) {  }
+  ) {
+    this.myForm = new FormGroup({
+      nomef: new FormControl(this.post.nome,
+        [Validators.required,
+          Validators.pattern('[A-Z]{3}[0-9]{4}'),
+        ]
+      )
+    });
+   }
 
 
   ngOnInit() {
