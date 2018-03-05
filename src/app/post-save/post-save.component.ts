@@ -102,7 +102,6 @@ export class PostSaveComponent implements OnInit {
     });
    }
 
-
   ngOnInit() {
     this.route.params.subscribe(params => {
       if (params.hasOwnProperty('id')) {
