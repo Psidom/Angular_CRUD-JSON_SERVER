@@ -3,7 +3,7 @@ import { Cadastro } from '../Cadastro';
 import { PostService } from '../services/post.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MessageService } from '../services/message.service';
-import { ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
+import { ReactiveFormsModule, FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-post-save',
@@ -87,20 +87,23 @@ export class PostSaveComponent implements OnInit {
     atributo4: '',
     atributo5: ''
  };
+ cloneForm: FormGroup;
+
   constructor(
     private postService: PostService,
     private router: Router,
     private route: ActivatedRoute,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private valida: FormBuilder
   ) {
-    this.myForm = new FormGroup({
-      nomef: new FormControl(this.post.nome,
-        [Validators.required,
-          Validators.pattern('[A-Z]{3}[0-9]{4}'),
-        ]
-      )
-    });
+    this.validar();
    }
+
+validar(){
+this.cloneForm = this.valida.group({
+nomev: [Validators.required, Validators.pattern('[A-Z]{3}[0-9]{4}')],
+});
+}
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -110,6 +113,8 @@ export class PostSaveComponent implements OnInit {
       }
     });
   }
+
+  get nome ( ) { return this.myForm.get('nomef'); }
 
   save() {
     if ( !this.post.atributo1 || this.post.atributo1 == null ) {
@@ -129,7 +134,9 @@ export class PostSaveComponent implements OnInit {
     } else {this.post.atributo5 = ' Pele Adaptativa '; }
     if (this.post.idade < 10 || this.post.idade > 20 ) {
       return null;
-    }
+    }if (this.cloneForm.status === 'INVALID') {
+      return null;
+        }
 
     this.postService.save(this.post)
     .subscribe(() => {

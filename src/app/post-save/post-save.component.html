@@ -5,9 +5,10 @@
         <legend>Editar Clone</legend>
     </ng-template>
     <form class="form-horizontal" (submit)="save()">
-        <div class="form-group">
+        <div [formGroup]="cloneForm" class="form-group">
             <label for="nome" class="control-label">Nome:</label>
-            <input id="nome" name="nome" required type="text" class="form-control" [(ngModel)]="post.nome">
+            <input id="nome" formControlName="nomev" name="nome" required type="text" class="form-control" [(ngModel)]="post.nome">
+            <p> {{cloneForm.status | json }} </p>
         </div>
         <div class="form-group">
             <label for="idade" class="control-label">Idade:</label>

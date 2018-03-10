@@ -7,7 +7,7 @@ export class PostService {
 
   // tslint:disable-next-line:member-ordering
 
- private baseUrl = 'http://localhost:3010/posts';
+ private baseUrl = 'http://localhost:3000/posts';
 constructor(private http: HttpClient) { }
 
 query(): Observable<Array<any>> {
@@ -23,7 +23,7 @@ return this.http.get(`${this.baseUrl}/${id}`);
    : this.http.put(`${this.baseUrl}/${data.id}`, data);
   }
 
-  destroy(id: any): Observable<any> { //Vai apresentar status 204
+  destroy(id: any): Observable<any> { // Vai apresentar status 204 em algumas situações
     return this.http.delete(`${this.baseUrl}/${id}`);
   }
 }
