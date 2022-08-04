@@ -28,7 +28,7 @@
         "express": "^4.16.2",
         "jquery": "^3.3.1",
         "lowdb": "^1.0.0",
-        "mongoose": "^5.0.8",
+        "mongoose": "^5.7.5",
         "morgan": "^1.9.0",
         "rxjs": "^5.5.6",
         "serve-favicon": "^2.4.5",
